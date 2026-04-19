@@ -1,5 +1,8 @@
 # Geometry Calculator
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/kkellerman/geometry-calculator)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue)](https://kkellerman.github.io/geometry-calculator)
+
 A browser-based geometry calculator that computes areas and volumes for common shapes, with live weather lookup by ZIP code.
 
 ## Features
