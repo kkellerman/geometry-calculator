@@ -16,6 +16,7 @@ All calculated values are displayed to 4 significant digits.
 
 ```bash
 npm install
+npx playwright install
 npm run start
 ```
 
