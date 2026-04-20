@@ -41,13 +41,13 @@ export function calculate(shape) {
 // ─── Weather ──────────────────────────────────────────────────────────────────
 
 const WMO_CODES = {
-  0: "Clear sky",        1: "Mainly clear",       2: "Partly cloudy",      3: "Overcast",
-  45: "Foggy",           48: "Icy fog",
-  51: "Light drizzle",   53: "Moderate drizzle",  55: "Dense drizzle",
-  61: "Slight rain",     63: "Moderate rain",      65: "Heavy rain",
-  71: "Slight snow",     73: "Moderate snow",      75: "Heavy snow",
-  80: "Slight showers",  81: "Moderate showers",   82: "Violent showers",
-  95: "Thunderstorm",    96: "Thunderstorm w/ hail", 99: "Thunderstorm w/ heavy hail"
+  0: "☀️ Clear sky",        1: "🌤️ Mainly clear",       2: "⛅ Partly cloudy",      3: "☁️ Overcast",
+  45: "🌫️ Foggy",           48: "🌫️ Icy fog",
+  51: "🌦️ Light drizzle",   53: "🌦️ Moderate drizzle",  55: "🌧️ Dense drizzle",
+  61: "🌧️ Slight rain",     63: "🌧️ Moderate rain",      65: "🌧️ Heavy rain",
+  71: "🌨️ Slight snow",     73: "🌨️ Moderate snow",      75: "❄️ Heavy snow",
+  80: "🌦️ Slight showers",  81: "🌧️ Moderate showers",   82: "⛈️ Violent showers",
+  95: "⛈️ Thunderstorm",    96: "⛈️ Thunderstorm w/ hail", 99: "⛈️ Thunderstorm w/ heavy hail"
 };
 
 export async function getWeather() {
@@ -77,8 +77,10 @@ export async function getWeather() {
     );
     if (!weatherRes.ok) throw new Error("Could not fetch weather.");
     const { current_weather } = await weatherRes.json();
-    const { temperature, windspeed, weathercode } = current_weather;
+    const { temperature, windspeed, weathercode, winddirection } = current_weather;
     const condition = WMO_CODES[weathercode] ?? "Unknown";
+    const directions = ["⬆️ N","↗️ NE","➡️ E","↘️ SE","⬇️ S","↙️ SW","⬅️ W","↖️ NW"];
+    const windDir = directions[Math.round(winddirection / 45) % 8];
 
     resultEl.innerHTML =
       `<span class="w-city">${city}, ${state}</span>` +
@@ -87,7 +89,7 @@ export async function getWeather() {
       `<span class="w-sep">|</span>` +
       `<span class="w-cond">${condition}</span>` +
       `<span class="w-sep">|</span>` +
-      `<span class="w-wind">Wind ${windspeed} mph</span>`;
+      `<span class="w-wind">Wind ${windspeed} mph ${windDir}</span>`;
   } catch (err) {
     resultEl.classList.add("error");
     resultEl.textContent = err.message;
