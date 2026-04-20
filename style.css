@@ -1,0 +1,206 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* ─── Header ──────────────────────────────────────────────────────────────── */
+
+header {
+  background: #2d3561;
+  color: #fff;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.header-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.header-weather-input {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.header-weather-input input {
+  padding: 0.4rem 0.7rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.9rem;
+  width: 110px;
+  outline: none;
+  text-align: center;
+  letter-spacing: 1px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.header-weather-input input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.header-weather-input input:focus {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.header-weather-input button {
+  padding: 0.4rem 0.85rem;
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.header-weather-input button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.weather-result {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.weather-result.hidden { display: none; }
+
+.weather-result.error {
+  color: #ffb3ae;
+}
+
+.w-temp   { font-weight: 700; font-size: 0.95rem; }
+.w-city   { opacity: 0.85; }
+.w-cond   { opacity: 0.85; }
+.w-wind   { opacity: 0.75; font-size: 0.8rem; }
+.w-sep    { opacity: 0.4; }
+
+/* ─── Main content ────────────────────────────────────────────────────────── */
+
+main {
+  padding: 2rem 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  color: #2d3561;
+  border-bottom: 2px solid #e8eaf6;
+  padding-bottom: 0.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.field input {
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.field input:focus {
+  border-color: #5c6bc0;
+}
+
+button {
+  padding: 0.65rem 1rem;
+  background: #5c6bc0;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #3949ab;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.result {
+  min-height: 2rem;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.95rem;
+  color: #2d3561;
+  font-weight: 500;
+}
+
+.result.error {
+  color: #c0392b;
+  background: #fdecea;
+}
+
+.shape-diagram {
+  width: 100%;
+  max-height: 80px;
+}
